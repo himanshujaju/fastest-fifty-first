@@ -1,8 +1,7 @@
 "use strict";
 
 (function() {
-	var game = new Phaser.Game(CONSTANTS.GAME.WIDTH, CONSTANTS.GAME.HEIGHT, Phaser.CANVAS, 
-	'fastest-fifty-first');
+	var game = new Phaser.Game(CONSTANTS.GAME.WIDTH, CONSTANTS.GAME.HEIGHT, Phaser.CANVAS,'fastest-fifty-first');
 
 	game.state.add("Boot", boot);
 	game.state.add("Preload", preload);

@@ -13,6 +13,7 @@ play.prototype = {
 		this.drawBackground();
 		this.drawBoard();
 		this.drawTimer();
+        this.drawScoreboard();
 	},
 
 	init: function() {
@@ -154,5 +155,25 @@ play.prototype = {
 
 	endGame: function() {
 		this.hasGameStarted = false;
+		var obj = {
+            "time":this.endTime - this.startTime
+        };
+		kapow.invokeRPC('postScore', obj, function() {
+            console.log("Success Posting Score");
+        }, function(error) {
+            console.log("Failure Posting score", error);
+        });
+    },
+
+    drawScoreboard: function() {
+        this.scoreboard = this.game.add.button(this.game.world.centerX, 1100, "leaderboard", this.renderScoreboard, this);
+        this.scoreboard.anchor.setTo(0.5, 0);
+    },
+
+    renderScoreboard: function() {
+		kapow.boards.displayScoreboard({
+            "metric":"time",
+            "interval":"daily"
+        });
 	}
 }
