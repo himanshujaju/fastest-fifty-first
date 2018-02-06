@@ -4,12 +4,6 @@
     src: url("../assets/fonts/Montserrat-ExtraBold.ttf");
 }
 
-@font-face {
-    font-family: "AmericanTypewriterCondensed";
-    font-weight: solid;
-    src: url("../assets/fonts/AmericanTypewriterCondensed.ttf");
-}
-
 html, body {
     margin: 0;
     padding: 0;
@@ -22,8 +16,8 @@ div, canvas {
     height: 100%;
 }
 
-#american {
-    font-family: AmericanTypewriterCondensed;
+#helvetica {
+    font-family: Helvetica;
     position:absolute;
     left:-100px;
 }

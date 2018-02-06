@@ -86,7 +86,7 @@ play.prototype = {
 	addCellOnBoard: function(x, y, text) {
 		let tempCell = this.game.add.button(x, y, "cell", this.onClick, this, 0, 0, 1, 0);
 		let style = {
-			font: "100px AmericanTypewriterCondensed",
+			font: "90px Helvetica",
 			fill: "#D9DBF0"
 		};
 		let buttonText = this.game.add.text(CONSTANTS.BOARD.CELL.WIDTH/2, CONSTANTS.BOARD.CELL.HEIGHT/2, text, style);
