@@ -1,7 +1,7 @@
 @font-face {
-    font-family: "Montserrat";
-    font-weight: solid;
-    src: url("../assets/fonts/Montserrat-ExtraBold.ttf");
+    font-family: "Helvetica-Light";
+    font-weight: light;
+    src: url("../assets/fonts/helvetica-light.ttf");
 }
 
 html, body {
@@ -22,8 +22,8 @@ div, canvas {
     left:-100px;
 }
 
-#montserrat {
-    font-family: Montserrat;
+#helveticaLight {
+    font-family: Helvetica-Light;
     position:absolute;
     left:-100px;
 }

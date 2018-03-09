@@ -13,6 +13,7 @@ play.prototype = {
 		this.drawBackground();
 		this.drawBoard();
 		this.drawTimer();
+		this.drawTap();
 	},
 
 	init: function() {
@@ -86,8 +87,8 @@ play.prototype = {
 	addCellOnBoard: function(x, y, text) {
 		let tempCell = this.game.add.button(x, y, "cell", this.onClick, this, 0, 0, 1, 0);
 		let style = {
-			font: "90px Helvetica",
-			fill: "#D9DBF0"
+			font: "100px Helvetica",
+			fill: "#F3F3F3"
 		};
 		let buttonText = this.game.add.text(CONSTANTS.BOARD.CELL.WIDTH/2, CONSTANTS.BOARD.CELL.HEIGHT/2, text, style);
 		buttonText.anchor.setTo(0.5);
@@ -100,6 +101,8 @@ play.prototype = {
 		let numberClicked = parseInt(button.children[0]._text);
 		if (numberClicked == this.nextNumber) {
 			this.nextNumber += 1;
+			this.nextTap.setText(this.prettify(this.nextNumber, 2))
+
 			if (this.nextNumber > 50) {
 				this.endGame();
 			}
@@ -113,7 +116,6 @@ play.prototype = {
 					this.startGame();
 				}
 
-				// can be optimised to O(1) by keeping reverse lookup
 				for (var i = 0; i < 25; i++) {
 					if (numberClicked == this.firstFace[i]) {
 						button.children[0].setText(this.secondFace[i]);
@@ -126,16 +128,38 @@ play.prototype = {
 
 	drawTimer: function() {
 		let textStyle = {
-			font: "100px Montserrat",
+			font: "bold 150px Helvetica",
 			align: "center",
-			fill: "#FCFFE5"
+			fill: "#F3F3F3"
 		};
-		this.timer = this.game.add.text(384, 33, "000.000", textStyle);
+		this.timer = this.game.add.text(this.game.world.centerX, 255, CONSTANTS.STRINGS.DEFAULT_TIMER, textStyle);
 		this.timer.anchor.setTo(0.5, 0);
 		
-		textStyle.font = "40px Montserrat";
-		let timerInfo = this.game.add.text(384, 140, "SECONDS ELAPSED", textStyle);
+		textStyle.font = "70px Helvetica-Light";
+		let timerInfo = this.game.add.text(this.game.world.centerX, 398, CONSTANTS.STRINGS.TIMER_DESCRIPTION, textStyle);
 		timerInfo.anchor.setTo(0.5, 0);
+	},
+
+	// Todo : should be refactored to some kind of util file
+	drawTap: function() {
+		let tapStyle = {
+			font: "100px Helvetica-Light",
+			align: "center",
+			fill: "#F3F3F3"
+		}
+		let tapText = this.game.add.text(350, 1636, "Tap", tapStyle);
+
+		let tempCell = this.game.add.button(540, 1617, "cell", null, this, 0, 0, 0, 0);
+		let style = {
+			font: "100px Helvetica",
+			fill: "#F3F3F3"
+		};
+		let text = this.prettify(this.nextNumber, 2);
+		this.nextTap = this.game.add.text(CONSTANTS.BOARD.CELL.WIDTH/2, CONSTANTS.BOARD.CELL.HEIGHT/2, text, style);
+		this.nextTap.anchor.setTo(0.5);
+		tempCell.addChild(this.nextTap);
+		tempCell.inputEnabled = false;
+		this.nextTap.inputEnabled = false;
 	},
 
 	updateTimer: function() {
@@ -154,5 +178,6 @@ play.prototype = {
 
 	endGame: function() {
 		this.hasGameStarted = false;
+		this.nextTap.setText("!");
 	}
 }

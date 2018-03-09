@@ -2,25 +2,25 @@
 
 let CONSTANTS = {
 	GAME: {
-		WIDTH: 768,
-		HEIGHT: 1280
+		WIDTH: 1080,
+		HEIGHT: 1920
 	},
 	STRINGS: {
 		DEFAULT_TIMER: "000.000",
-		TIMER_DESCRIPTION: "SECONDS ELAPSED"
+		TIMER_DESCRIPTION: "seconds elapsed"
 	},
 	BOARD: {
 		ROWS: 5,
 		COLS: 5,
 		OFFSET: {
-			LEFT: 44,
-			TOP: 256
+			LEFT: 80,
+			TOP: 579
 		},
 		CELL: {
-			HEIGHT: 128,
-			WIDTH: 128
+			HEIGHT: 160,
+			WIDTH: 160
 		},
-		CELL_SPACING: 10
+		CELL_SPACING: 30
 	},
 	STATES: {
 		BOOT: "boot",
