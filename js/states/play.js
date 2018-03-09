@@ -179,5 +179,21 @@ play.prototype = {
 	endGame: function() {
 		this.hasGameStarted = false;
 		this.nextTap.setText("!");
+
+		var obj = {
+			"time" : this.endTime - this.startTime
+		};
+		kapow.invokeRPC('postScore', obj, function() {
+			console.log("Posted score successfully!");
+		}, function(error) {
+			console.log("Error while posting score ", error);
+		});
+	},
+
+	renderScoreboard: function() {
+		kapow.boards.displayScoreboard({
+			"metric": "timeTaken",
+			"interval": "daily"
+		});
 	}
 }
