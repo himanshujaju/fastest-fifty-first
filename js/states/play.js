@@ -130,7 +130,7 @@ play.prototype = {
 		let textStyle = {
 			font: "bold 150px Helvetica",
 			align: "center",
-			fill: "#F3F3F3"
+			fill: "#B16752"
 		};
 		this.timer = this.game.add.text(this.game.world.centerX, 255, CONSTANTS.STRINGS.DEFAULT_TIMER, textStyle);
 		this.timer.anchor.setTo(0.5, 0);
@@ -145,7 +145,7 @@ play.prototype = {
 		let tapStyle = {
 			font: "100px Helvetica-Light",
 			align: "center",
-			fill: "#F3F3F3"
+			fill: "#B16752"
 		}
 		let tapText = this.game.add.text(350, 1636, "Tap", tapStyle);
 
